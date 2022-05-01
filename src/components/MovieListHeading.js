@@ -1,7 +1,6 @@
 import React from "react";
 
 const MovieListHeading = (props) => {
-  console.log(props)
   return (
     <div className="col">
       <h1>{props.heading}</h1>

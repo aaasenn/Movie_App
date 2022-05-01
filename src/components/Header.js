@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <>
       <h1 className='col align-start'>Watch List</h1>
-      <div className='col align-items-end align-self-center' >
+      <div className='col align-self-center' >
         <input type='button' value='Log In'
         className="btn btn-outline-primary btn-lg"
         ></input>
