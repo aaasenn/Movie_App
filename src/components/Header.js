@@ -11,6 +11,11 @@ export default function Header() {
           className="btn btn-outline-primary btn-lg"
           ></input>
         </Link>
+        <Link to = "/login">
+          <input type='button' value='Login'
+          className="btn btn-outline-primary btn-lg"
+          ></input>
+        </Link>
       </div>
     </>
   )

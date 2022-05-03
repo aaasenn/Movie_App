@@ -10,6 +10,7 @@ import { selectAllFilms, selectFilms, fetchFilms } from './features/movies/movie
 import { loadFilms } from './store/movies/movies-actions';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
+import LoginPage from './pages/LoginPage';
 
 const API_KEY = 'bba7381a';
 
@@ -45,15 +46,10 @@ const App = () => {
   useEffect(() => {
       if (status === 'idle') {
         dispatch(fetchFilms())
-      }
-      
+      }  
       if (status === 'finished') {
         setMovies(...films)
-        console.log('Movies >>>', movies)
       }
-      
-      console.log('Films >>>', films)
-      
   }, [status, dispatch]);
 
 
@@ -69,6 +65,7 @@ const App = () => {
           setSearchValue={setSearchValue} 
           movies={movies} />} />
        <Route path='/registration' element={<Registration />}/>
+       <Route path='/login' element={<LoginPage />}/>
       </Routes>
     </div>
 
