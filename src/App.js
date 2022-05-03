@@ -6,7 +6,7 @@ import './App.css';
 import { Routes, Route } from "react-router-dom";
 
 import Header from './components/Header';
-import { selectAllFilms, selectFilms } from './store/movies/movies-selector';
+import { selectAllFilms, selectFilms, fetchFilms } from './features/movies/movies-slice';
 import { loadFilms } from './store/movies/movies-actions';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
@@ -43,11 +43,18 @@ const App = () => {
 
   // setMovies(films)
   useEffect(() => {
-      if (!qty) {
-        dispatch(loadFilms())
-      }    
-      setMovies(films)
-  }, [qty, dispatch]);
+      if (status === 'idle') {
+        dispatch(fetchFilms())
+      }
+      
+      if (status === 'finished') {
+        setMovies(...films)
+        console.log('Movies >>>', movies)
+      }
+      
+      console.log('Films >>>', films)
+      
+  }, [status, dispatch]);
 
 
   return (
