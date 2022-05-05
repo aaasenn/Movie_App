@@ -4,6 +4,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Routes, Route } from "react-router-dom";
+import { withErrorBoundary } from "react-error-boundary"
 
 import Header from './components/Header';
 import { selectAllFilms, selectFilms, fetchFilms } from './features/movies/movies-slice';
@@ -11,6 +12,7 @@ import { loadFilms } from './store/movies/movies-actions';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
 import LoginPage from './pages/LoginPage';
+import { nagievUniversal } from './config';
 
 const API_KEY = 'bba7381a';
 
@@ -72,4 +74,8 @@ const App = () => {
   )
 }
 
-export default App;
+export default withErrorBoundary(App, {
+  fallback: <div>Looks like smth went wrong
+  <p><img src={nagievUniversal} /></p>
+  </div>
+});
