@@ -8,7 +8,7 @@ import { withErrorBoundary } from "react-error-boundary"
 
 import Header from './components/Header';
 import { selectAllFilms, selectFilms, fetchFilms } from './features/movies/movies-slice';
-import { loadFilms } from './store/movies/movies-actions';
+// import { loadFilms } from './store/movies/movies-actions';
 import Home from './pages/Home';
 import Registration from './pages/Registration';
 import LoginPage from './pages/LoginPage';
@@ -67,7 +67,7 @@ const App = () => {
       <Routes>
        <Route path='/' element={<Home/>} />
        <Route path='/registration' element={<Registration />}/>
-       <Route path='/login' element={<LoginPage />}/>      
+       <Route path='/login' element={<LoginPage />}/>     
       </Routes>
       </SearchContext.Provider>
     </div>
