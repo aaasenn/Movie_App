@@ -19,7 +19,6 @@ export default function Header() {
 
         <span>Hello, {email}</span>
         <button className="btn btn-outline-secondary btn-sm ml-4" onClick={()=> dispatch(removeUser())}>Log out</button>
-        <button className='btn btn-success pr-4 pl-4 ml-4'><Link to="/favorites">Favorites</Link></button>
       </div>
   </>) : (
     <>
