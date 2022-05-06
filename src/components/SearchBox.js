@@ -1,12 +1,15 @@
-import React from "react"
+import React, {useContext} from "react"
+import {SearchContext} from "../App";
 
-const SearchBox = (props) => {
+const SearchBox = () => {
+  const {searchValue, setSearchValue} = useContext(SearchContext)
+
   return (
     <div className="col col-sm-4">
       <input 
       className="form-control"
-      value={props.value}
-      onChange={ (event) => { return props.setSearchValue(event.target.value)}}
+      value={searchValue}
+      onChange={ (event) => { return setSearchValue(event.target.value)}}
       placeholder="Type" />
     </div>
   )

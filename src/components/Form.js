@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import {useForm} from 'react-hook-form';
+import PropTypes from 'prop-types'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Form({title, handleClick}) {
@@ -45,4 +46,9 @@ export default function Form({title, handleClick}) {
  )}
     </form>
   )
+}
+
+Form.propTypes = {
+  title: PropTypes.string,
+  handleClick: PropTypes.func,
 }

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,12 +15,14 @@ import LoginPage from './pages/LoginPage';
 import { nagievUniversal } from './config';
 
 const API_KEY = 'bba7381a';
+export const SearchContext = createContext();
 
 const App = () => {
   
   //Реализация поиска фильмов
   const [movies, setMovies] = useState([]);
-  const [searchValue, setSearchValue] = useState('')
+  const [searchValue, setSearchValue] = useState('');
+  const [favs, setFavs] = useState([])
 
   
   const getMovieRequest = async (searchValue) => {
@@ -44,7 +46,7 @@ const App = () => {
   const films = useSelector(selectAllFilms)
   const {status, error, qty} = useSelector(selectFilms)
 
-  // setMovies(films)
+
   useEffect(() => {
       if (status === 'idle') {
         dispatch(fetchFilms())
@@ -60,22 +62,21 @@ const App = () => {
       <header className='row pt-4 pb-4'>
         <Header />
       </header>
+      <SearchContext.Provider value = {{movies, setSearchValue, searchValue
+      }}>
       <Routes>
-      <Route path='/' element={
-        <Home
-          searchValue={searchValue} 
-          setSearchValue={setSearchValue} 
-          movies={movies} />} />
+       <Route path='/' element={<Home/>} />
        <Route path='/registration' element={<Registration />}/>
-       <Route path='/login' element={<LoginPage />}/>
+       <Route path='/login' element={<LoginPage />}/>      
       </Routes>
+      </SearchContext.Provider>
     </div>
 
   )
 }
 
 export default withErrorBoundary(App, {
-  fallback: <div>Looks like smth went wrong
+  fallback: <div><h1>Looks like smth went wrong</h1>
   <p><img src={nagievUniversal} /></p>
   </div>
 });

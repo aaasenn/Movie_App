@@ -1,15 +1,16 @@
-import React from "react";
+import React, {useContext} from "react";
+import {SearchContext} from '../App';
 
-const MovieList = (props) => {
+
+const MovieList = () => {
+  const {movies} = useContext(SearchContext);
+  console.log(movies)
   return (
     <>
-      {props.movies.map((movie, index) => {
+      {movies.map((movie, index) => {
         return (
           <div key={index} className="d-flex justify-content-start m-3">
             <img src={movie.Poster} alt='movie'></img>
-            <div className="row align-items-end">
-            <button className="btn btn-primary">+</button>
-            </div>
           </div>
         )
       })}

@@ -12,11 +12,14 @@ export default function Header() {
   return isAuth ? (
   <>
     <h1 className='col align-start'><Link to="/">Watch List</Link></h1>
+      <div className = 'col align-self-center'>
+       
+      </div>
       <div className='col align-self-center' > 
 
         <span>Hello, {email}</span>
         <button className="btn btn-outline-secondary btn-sm ml-4" onClick={()=> dispatch(removeUser())}>Log out</button>
-        
+        <button className='btn btn-success pr-4 pl-4 ml-4'><Link to="/favorites">Favorites</Link></button>
       </div>
   </>) : (
     <>

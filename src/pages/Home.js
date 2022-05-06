@@ -8,10 +8,10 @@ const Home = ({searchValue, setSearchValue, movies}) => {
     <>
       <div className='row d-flex align-items-center mt-4 mb-4'>
         <MovieListHeading heading='HDrezka'/>
-        <SearchBox searchValue={searchValue} setSearchValue={setSearchValue}/>
+        <SearchBox />
       </div>
       <div className='row'>
-        <MovieList movies={movies} />
+        <MovieList />
       </div>      
     </>
   )
